@@ -13,4 +13,6 @@ def compute_cost(X, y, theta):
 
     # ==========================================================
 
+    cost = sum((X.dot(theta) - y) ** 2) / (2 * m)
+
     return cost

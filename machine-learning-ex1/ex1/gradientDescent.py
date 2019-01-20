@@ -16,6 +16,10 @@ def gradient_descent(X, y, theta, alpha, num_iters):
 
         # ===========================================================
         # Save the cost every iteration
+
+        gradient = np.dot(X.dot(theta) - y, X)
+        theta = theta - (alpha / m) * gradient
+
         J_history[i] = compute_cost(X, y, theta)
 
     return theta, J_history
@@ -34,6 +38,10 @@ def gradient_descent_multi(X, y, theta, alpha, num_iters):
 
         # ===========================================================
         # Save the cost every iteration
+
+        gradient = np.dot(X.dot(theta) - y, X)
+        theta = theta - (alpha / m) * gradient
+
         J_history[i] = compute_cost(X, y, theta)
 
     return theta, J_history

@@ -39,7 +39,8 @@ print('Theta found by gradient descent: ' + str(theta.reshape(2)))
 # Plot the linear fit
 plt.figure(0)
 line1, = plt.plot(X[:, 1], np.dot(X, theta), label='Linear Regression')
-plt.legend(handles=[line1])
+#plt.legend(handles=[line1])
+plt.legend()
 
 input('Program paused. Press ENTER to continue')
 

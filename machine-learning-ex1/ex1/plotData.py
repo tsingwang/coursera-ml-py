@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def plot_data(x, y):
@@ -14,4 +15,12 @@ def plot_data(x, y):
 
     # ===========================================================
 
+    plt.scatter(x, y, marker='x', color='r', label='Training Data')
+    plt.xlabel('Population of City in 10,000s')
+    plt.ylabel('Profit in $10,000s')
     plt.show()
+
+
+if __name__ == '__main__':
+    df = pd.read_csv('ex1data1.txt', names=['population', 'profit'])
+    plot_data(df.population, df.profit)
