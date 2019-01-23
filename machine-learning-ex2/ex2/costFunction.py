@@ -14,7 +14,10 @@ def cost_function(theta, X, y):
     #                You should set cost and grad correctly.
     #
 
+    # hypothesis
+    h = sigmoid(X.dot(theta))
 
-    # ===========================================================
+    cost = sum(-y * np.log(h) - (1 - y) * np.log(1 - h)) / m
+    grad = np.dot((h - y), X) / m
 
     return cost, grad

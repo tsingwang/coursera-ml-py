@@ -14,7 +14,10 @@ def predict(theta, X):
     #                You should set p to a 1D-array of 0's and 1's
     #
 
-
-    # ===========================================================
+    p = sigmoid(X.dot(theta))
+    pos = np.where(p >= 0.5)
+    neg = np.where(p < 0.5)
+    p[pos] = 1
+    p[neg] = 0
 
     return p
