@@ -56,7 +56,9 @@ def process_email(email_contents):
         #                'action' appears. For example, if vocab_list[18] == 'action'
         #                then you should add 18 to the word_indices array.
 
-
+        for i in range(1, len(vocab_list) + 1):
+            if vocab_list[i] == token:
+                word_indices = np.append(word_indices, i)
 
         # ==========================================================
 

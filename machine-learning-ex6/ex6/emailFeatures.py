@@ -44,6 +44,7 @@ def email_features(word_indices):
     #
     #
 
+    features[word_indices - 1] = 1
 
     # ==========================================================
 
