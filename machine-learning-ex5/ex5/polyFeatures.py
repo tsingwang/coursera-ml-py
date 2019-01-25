@@ -10,6 +10,9 @@ def poly_features(X, p):
     #                column of X contains the values of X to the p-th power.
     #
 
+    P = np.arange(1, p + 1)
+
+    X_poly = X.reshape((X.size, 1)) ** P
 
     # ==========================================================
 
