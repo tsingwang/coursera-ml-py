@@ -47,7 +47,33 @@ def nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels,
     #               and theta2_grad from Part 2.
     #
 
+    Y = np.zeros((m, num_labels))  # 5000 x 10
 
+    for i in range(m):
+        Y[i, y[i]-1] = 1
+
+    a1 = np.c_[np.ones(m), X]  # 5000 x 401
+    a2 = np.c_[np.ones(m), sigmoid(np.dot(a1, theta1.T))]  # 5000 x 26
+    hypothesis = sigmoid(np.dot(a2, theta2.T))  # 5000 x 10
+
+    reg_theta1 = theta1[:, 1:]  # 25 x 400
+    reg_theta2 = theta2[:, 1:]  # 10 x 25
+
+    cost = np.sum(-Y * np.log(hypothesis) - np.subtract(1, Y) * np.log(np.subtract(1, hypothesis))) / m \
+            + (lmd / (2 * m)) * (np.sum(reg_theta1 * reg_theta1) + np.sum(reg_theta2 * reg_theta2))
+
+    e3 = hypothesis - Y  # 5000 x 10
+    e2 = np.dot(e3, theta2) * (a2 * np.subtract(1, a2))  # 5000 x 26
+    e2 = e2[:, 1:]  # drop the intercept column  # 5000 x 25
+
+    delta1 = np.dot(e2.T, a1)  # 25 x 401
+    delta2 = np.dot(e3.T, a2)  # 10 x 26
+
+    p1 = (lmd / m) * np.c_[np.zeros(hidden_layer_size), reg_theta1]
+    p2 = (lmd / m) * np.c_[np.zeros(num_labels), reg_theta2]
+
+    theta1_grad = p1 + (delta1 / m)
+    theta2_grad = p2 + (delta2 / m)
 
     # ====================================================================================
     # Unroll gradients

@@ -12,6 +12,8 @@ def rand_initialization(l_in, l_out):
     # Note : The first column of w corresponds to the parameters for the bias unit
     #
 
+    ep_init = 0.12
+    w = np.random.rand(l_out, 1 + l_in) * (2 * ep_init) - ep_init
 
     # ===========================================================
 
