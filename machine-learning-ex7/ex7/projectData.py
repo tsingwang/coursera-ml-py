@@ -15,6 +15,8 @@ def project_data(X, U, K):
     #                   (above is octave code)
     #
 
+    Ureduce = U[:, np.arange(K)]
+    Z = np.dot(X, Ureduce)
 
     # ==========================================================
 

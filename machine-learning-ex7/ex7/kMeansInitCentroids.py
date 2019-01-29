@@ -10,6 +10,8 @@ def kmeans_init_centroids(X, K):
     #               the dataset X
     #
 
+    indices = np.random.randint(X.shape[0], size=K)
+    centroids = X[indices]
 
     # ==========================================================
 

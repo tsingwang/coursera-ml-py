@@ -18,6 +18,16 @@ def find_closest_centroids(X, centroids):
     #                range 0..k
     #
 
+    means = np.zeros((m, K))
+
+    for i in range(m):
+        x = X[i]
+        diff = x - centroids
+
+        for k in range(K):
+            means[i, k] = np.linalg.norm(diff[k])
+
+    idx = np.argmin(means, axis=1)
 
     # ==========================================================
 
