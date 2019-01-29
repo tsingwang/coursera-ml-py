@@ -20,7 +20,13 @@ def select_threshold(yval, pval):
         #        of False(0)'s and True(1)'s of the outlier predictions
         #
 
-
+        predictions = np.less(pval, epsilon)
+        tp = np.sum(np.logical_and(predictions, yval))
+        fp = np.sum(np.logical_and(predictions, yval == 0))
+        fn = np.sum(np.logical_and(np.logical_not(predictions), yval == 1))
+        precision = tp / (tp + fp)
+        recall = tp / (tp + fn)
+        f1 = (2 * precision * recall) / (precision + recall)
 
         # ==========================================================
 
